@@ -3,8 +3,7 @@ const searchButton = document.getElementById('searchButton');
 const displayDiv = document.getElementById('results');
 
 
-const searchPokemon = async (pokemonId = 3) => {
-  searchInput.value = "";
+const searchPokemon = async (pokemonId) => {
   const { data } = await axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemonId}`);
   console.log(data)
   createContainer(data);
@@ -14,7 +13,9 @@ searchInput.addEventListener('keydown', (event) => {
   if (event.keyCode == 13)
     searchPokemon(parseInt(searchInput.value))})
 
-searchButton.addEventListener('click', () => {searchPokemon(parseInt(searchInput.value))})
+
+searchButton.addEventListener('click', () => {searchPokemon(searchInput.value)})
+
 
 const createContainer = (data) => {
   const tempPoke = [document.createElement('div') , 
