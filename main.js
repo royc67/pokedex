@@ -1,5 +1,5 @@
 const searchInput = document.getElementById('search');
-const searchButton = document.getElementById('searchButon');
+const searchButton = document.getElementById('searchButton');
 const displayDiv = document.getElementById('results');
 
 
@@ -8,4 +8,6 @@ const searchPokemon = async (pokemonId = 3) => {
   console.log(data)
 };
 searchPokemon();
+
+searchButton.addEventListener('click', () => {searchPokemon(parseInt(searchInput.value))})
 
