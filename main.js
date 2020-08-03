@@ -1,6 +1,9 @@
 const searchInput = document.getElementById('search');
 const searchButton = document.getElementById('searchButton');
 const displayDiv = document.getElementById('results');
+const searchType = document.getElementById('searchType');
+const searchTypeButton = document.getElementById('searchTypeButton');
+const typeResults = document.getElementById('typeResults');
 
 
 const searchPokemon = async (pokemonId) => {
@@ -19,8 +22,9 @@ const searchPokemon = async (pokemonId) => {
 
 //searchPokemon();
 searchInput.addEventListener('keydown', (event) => {
-  if (event.keyCode == 13)
-    searchPokemon(searchInput.value)})
+  if (event.keyCode == 13){
+    displayDiv.innerHTML = "";
+    searchPokemon(searchInput.value)}})
 
 
 searchButton.addEventListener('click', () => {
