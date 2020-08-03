@@ -27,14 +27,13 @@ const searchPokemonType = async (pokemonType) => {
     const { data } = await axios.get(`https://pokeapi.co/api/v2/type/${pokemonType}/`);
   
   console.log(data)
+  return data.pokemon;
   }
   catch(e) {
     alert(e.message)
     return e;
   }
 };
-
-
 
 //searchPokemon();
 searchInput.addEventListener('keydown', (event) => {
@@ -67,7 +66,7 @@ const createContainer = (data) => {
   for (let i = 0; i< data.types.length; i++){
     let temp = document.createElement('li')
     temp.innerHTML = data.types[i].type.name;
-    tempPoke[3].appendChild(temp);
+    Poke[3].appendChild(temp);
   }
 
   tempPoke.forEach(element => {displayDiv.appendChild(element)});
