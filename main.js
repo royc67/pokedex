@@ -61,7 +61,7 @@ const createContainer = (data) => {
   tempPoke[1].innerHTML = `height: ${data.height}`; 
   tempPoke[2].innerHTML = `weight: ${data.weight}`; 
   tempPoke[4].src = data.sprites.front_default;
-  tempPoke[4].addEventListener('mouseover', ()=> {tempPoke[4].src = data.sprites.back_default});
+  tempPoke[4].addEventListener('mouseenter', ()=> {tempPoke[4].src = data.sprites.back_default});
   tempPoke[4].addEventListener('mouseleave', ()=> {tempPoke[4].src = data.sprites.front_default});
 
   //types:
