@@ -6,6 +6,7 @@ const searchTypeButton = document.getElementById('searchTypeButton');
 const typeResults = document.getElementById('typeResults');
 
 
+//search pokemon
 const searchPokemon = async (pokemonId) => {
   searchInput.value = "";
   try {
@@ -19,6 +20,21 @@ const searchPokemon = async (pokemonId) => {
     return e;
   }
 };
+
+//search types
+const searchPokemonType = async (pokemonType) => {
+  try {
+    const { data } = await axios.get(`https://pokeapi.co/api/v2/type/${pokemonType}/`);
+  
+  console.log(data)
+  }
+  catch(e) {
+    alert(e.message)
+    return e;
+  }
+};
+
+
 
 //searchPokemon();
 searchInput.addEventListener('keydown', (event) => {
