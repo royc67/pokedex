@@ -23,7 +23,9 @@ searchInput.addEventListener('keydown', (event) => {
     searchPokemon(searchInput.value)})
 
 
-searchButton.addEventListener('click', () => {searchPokemon(searchInput.value)})
+searchButton.addEventListener('click', () => {
+  displayDiv.innerHTML = "";
+  searchPokemon(searchInput.value)})
 
 
 const createContainer = (data) => {
