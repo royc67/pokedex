@@ -22,15 +22,20 @@ const searchPokemon = async (pokemonId) => {
 };
 
 //search types
-const searchPokemonType = async (URL) => {
+const searchPokemonType = async (URL,e) => {
   try {
     const { data } = await axios.get(`${URL}`);
   
   console.log(data)
+  let pokemonList = document.createElement('ul')
   for (let i = 0; i<data.pokemon.length;i++){
+    let temp = document.createElement('li')
+    temp.innerHTML = data.pokemon[i].pokemon.name;
+    pokemonList.appendChild(temp);
     console.log(data.pokemon[i].pokemon.name)
   }
-  return data.pokemon;
+  e.target.appendChild(pokemonList);
+  return pokemonList;
   }
   catch(e) {
     alert(e.message)
@@ -65,11 +70,11 @@ const createContainer = (data) => {
   tempPoke[4].addEventListener('mouseleave', ()=> {tempPoke[4].src = data.sprites.front_default});
 
   //types:
-  const types = []
   for (let i = 0; i< data.types.length; i++){
     let temp = document.createElement('li')
     temp.innerHTML = data.types[i].type.name;
-    temp.addEventListener('click', () => searchPokemonType(data.types[i].type.url));
+    //searchPokemonType(data.types[i].type.url,temp)
+    temp.addEventListener('click', (e) => searchPokemonType(data.types[i].type.url,e));
     tempPoke[3].appendChild(temp);
   }
 
