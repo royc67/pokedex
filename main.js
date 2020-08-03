@@ -4,14 +4,23 @@ const displayDiv = document.getElementById('results');
 
 
 const searchPokemon = async (pokemonId) => {
-  const { data } = await axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+  searchInput.value = "";
+  try {
+    const { data } = await axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+  
   console.log(data)
   createContainer(data);
+  }
+  catch(e) {
+    alert(e.message)
+    return e;
+  }
 };
+
 //searchPokemon();
 searchInput.addEventListener('keydown', (event) => {
   if (event.keyCode == 13)
-    searchPokemon(parseInt(searchInput.value))})
+    searchPokemon(searchInput.value)})
 
 
 searchButton.addEventListener('click', () => {searchPokemon(searchInput.value)})
