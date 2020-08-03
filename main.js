@@ -66,7 +66,7 @@ const createContainer = (data) => {
   for (let i = 0; i< data.types.length; i++){
     let temp = document.createElement('li')
     temp.innerHTML = data.types[i].type.name;
-    Poke[3].appendChild(temp);
+    tempPoke[3].appendChild(temp);
   }
 
   tempPoke.forEach(element => {displayDiv.appendChild(element)});
