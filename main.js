@@ -23,25 +23,29 @@ const searchPokemon = async (pokemonId) => {
 
 //search types
 const searchPokemonType = async (type,URL,e) => {
-  e.target.innerHTML = type;
-  try {
-    const { data } = await axios.get(`${URL}`);
+  if (type == e.target.innerHTML) {
+    try {
+      const { data } = await axios.get(`${URL}`);
+    
+    console.log(data)
+    let pokemonList = document.createElement('ul')
+    for (let i = 0; i<data.pokemon.length;i++){
+      let temp = document.createElement('li')
+      temp.innerHTML = data.pokemon[i].pokemon.name;
+      temp.addEventListener('click', () => {e.target.innerHTML = type; displayDiv.innerHTML = ""; searchPokemon(data.pokemon[i].pokemon.name)})
+      pokemonList.appendChild(temp);
+      console.log(data.pokemon[i].pokemon.name)
+    }
+    e.target.appendChild(pokemonList);
+    return pokemonList;
+    }
+    catch(e) {
+      alert(e.message)
+      return e;
+    }
+  }
+  else e.target.innerHTML = type;
   
-  console.log(data)
-  let pokemonList = document.createElement('ul')
-  for (let i = 0; i<data.pokemon.length;i++){
-    let temp = document.createElement('li')
-    temp.innerHTML = data.pokemon[i].pokemon.name;
-    pokemonList.appendChild(temp);
-    console.log(data.pokemon[i].pokemon.name)
-  }
-  e.target.appendChild(pokemonList);
-  return pokemonList;
-  }
-  catch(e) {
-    alert(e.message)
-    return e;
-  }
 };
 
 //searchPokemon();
