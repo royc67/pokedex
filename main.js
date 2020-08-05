@@ -22,7 +22,8 @@ const searchPokemon = async (pokemonId) => {
 };
 
 //search types
-const searchPokemonType = async (URL,e) => {
+const searchPokemonType = async (type,URL,e) => {
+  e.target.innerHTML = type;
   try {
     const { data } = await axios.get(`${URL}`);
   
@@ -74,7 +75,7 @@ const createContainer = (data) => {
     let temp = document.createElement('li')
     temp.innerHTML = data.types[i].type.name;
     //searchPokemonType(data.types[i].type.url,temp)
-    temp.addEventListener('click', (e) => searchPokemonType(data.types[i].type.url,e));
+    temp.addEventListener('click', (e) => searchPokemonType(data.types[i].type.name, data.types[i].type.url,e));
     tempPoke[3].appendChild(temp);
   }
 
