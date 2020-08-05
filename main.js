@@ -1,9 +1,6 @@
 const searchInput = document.getElementById('search');
 const searchButton = document.getElementById('searchButton');
 const displayDiv = document.getElementById('results');
-const searchType = document.getElementById('searchType');
-const searchTypeButton = document.getElementById('searchTypeButton');
-const typeResults = document.getElementById('typeResults');
 
 
 //search pokemon
